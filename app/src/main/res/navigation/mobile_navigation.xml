@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_events">
+
+    <fragment
+        android:id="@+id/navigation_events"
+        android:name="me.ycdev.android.demo.customviews.ui.events.EventsFragment"
+        android:label="@string/title_events"
+        tools:layout="@layout/fragment_events" />
+
+    <fragment
+        android:id="@+id/navigation_layout"
+        android:name="me.ycdev.android.demo.customviews.ui.layout.LayoutFragment"
+        android:label="@string/title_layout"
+        tools:layout="@layout/fragment_layout" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="me.ycdev.android.demo.customviews.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+</navigation>
