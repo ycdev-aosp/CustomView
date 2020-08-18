@@ -4,27 +4,46 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import me.ycdev.android.demo.customviews.R
+import me.ycdev.android.demo.customviews.databinding.FragmentEventsBinding
 
 class EventsFragment : Fragment() {
-
-    private lateinit var eventsViewModel: EventsViewModel
+    lateinit var binding: FragmentEventsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        eventsViewModel = ViewModelProvider(this).get(EventsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_events, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        eventsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        CallRecordsCollector.callRecords.clear() // clear the records
+        binding = FragmentEventsBinding.inflate(inflater)
+        binding.oneInterceptDown.setOnCheckedChangeListener { _, checked ->
+            binding.showcaseOne.interceptDown = checked
+        }
+        binding.oneInterceptOthers.setOnCheckedChangeListener { _, checked ->
+            binding.showcaseOne.interceptOthers = checked
+        }
+        binding.oneHandled.setOnCheckedChangeListener { _, checked ->
+            binding.showcaseOne.handled = checked
+        }
+        binding.oneDisallowIntercept.setOnCheckedChangeListener { _, checked ->
+            binding.oneBtnHasListener.disallowIntercept = checked
+            binding.oneBtnNoListener.disallowIntercept = checked
+        }
+        binding.oneBtnHasListener.setOnClickListener {
+            Snackbar.make(binding.oneBtnHasListener, "Clicked", Snackbar.LENGTH_SHORT).show()
+        }
+        binding.oneBtnDisable.setOnClickListener {
+            val enabled = !binding.oneBtnHasListener.isEnabled
+            binding.oneBtnHasListener.isEnabled = enabled
+            binding.oneBtnNoListener.isEnabled = enabled
+            binding.oneBtnDisable.setText(if (enabled) R.string.events_btn_disable else R.string.events_btn_enable)
+        }
+        binding.oneBtnDisallowIntercept.setOnClickListener {
+            binding.showcaseOne.requestDisallowInterceptTouchEvent(true)
+        }
+        return binding.root
     }
 }

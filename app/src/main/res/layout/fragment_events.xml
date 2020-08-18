@@ -1,22 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical"
     tools:context=".ui.events.EventsFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <me.ycdev.android.demo.customviews.ui.events.MyLinearLayout
+        android:id="@+id/showcase_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:padding="10dp"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical">
+        <CheckBox
+            android:id="@+id/one_disallow_intercept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/events_disallow_intercept" />
+        <CheckBox
+            android:id="@+id/one_handled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/events_handled" />
+        <CheckBox
+            android:id="@+id/one_intercept_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/events_intercept_down" />
+        <CheckBox
+            android:id="@+id/one_intercept_others"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/events_intercept_others" />
+        <me.ycdev.android.demo.customviews.ui.events.MyButton
+            android:id="@+id/one_btn_has_listener"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/events_btn_has_listener" />
+        <me.ycdev.android.demo.customviews.ui.events.MyButton
+            android:id="@+id/one_btn_no_listener"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/events_btn_no_listener" />
+        <Button
+            android:id="@+id/one_btn_disable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/events_btn_disable" />
+        <Button
+            android:id="@+id/one_btn_disallow_intercept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/events_btn_disallow_intercept" />
+    </me.ycdev.android.demo.customviews.ui.events.MyLinearLayout>
+
+</LinearLayout>

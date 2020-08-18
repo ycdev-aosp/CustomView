@@ -3,4 +3,14 @@
     <string name="title_events">Events</string>
     <string name="title_layout">Layout</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="events_intercept_down">Intercept ACTION_DOWN</string>
+    <string name="events_intercept_others">Intercept Others</string>
+    <string name="events_handled">Handled</string>
+    <string name="events_disallow_intercept">Disallow Intercept</string>
+    <string name="events_btn_has_listener">Has Listener</string>
+    <string name="events_btn_no_listener">No Listener</string>
+    <string name="events_btn_disable">Disable</string>
+    <string name="events_btn_enable">Enable</string>
+    <string name="events_btn_disallow_intercept">Disallow Intercept (not work)</string>
 </resources>

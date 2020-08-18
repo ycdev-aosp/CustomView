@@ -1,12 +1,15 @@
 package me.ycdev.android.demo.customviews
 
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.MotionEvent.actionToString
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,5 +28,19 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        Timber.tag(TAG).d("dispatchTouchEvent: %s", actionToString(event.action))
+        return super.dispatchTouchEvent(event)
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        Timber.tag(TAG).d("onTouchEvent: %s", actionToString(event.action))
+        return super.onTouchEvent(event)
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
     }
 }
